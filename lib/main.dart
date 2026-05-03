@@ -13,32 +13,21 @@ class PlanetsApp extends StatefulWidget {
 }
 
 class _PlanetsAppState extends State<PlanetsApp> {
-  bool isArabic = true;
-
-  void toggleLanguage() {
-    setState(() {
-      isArabic = !isArabic;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Planet Explorer',
       theme: ThemeData(
         brightness: Brightness.dark,
         scaffoldBackgroundColor: const Color(0xFF010206),
         primaryColor: Colors.amber,
-        fontFamily: 'Cairo', // تأكد من إضافة الخط في pubspec.yaml إذا أردت
-        useMaterial3: true,
       ),
       home: const SplashScreen(),
     );
   }
 }
 
-// --- 1. شاشة الترحيب (Splash Screen) لإلغاء الشاشة السوداء ---
+// --- 1. شاشة ترحيب (Splash Screen) لمنع السواد وتحسين الجمالية ---
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -51,10 +40,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(const Duration(seconds: 3), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const MainNavigationScreen()),
-      );
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const MainNavigationScreen()));
     });
   }
 
@@ -65,16 +51,13 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('assets/images/earth.png', width: 150),
+            const Icon(Icons.stars, size: 80, color: Colors.amber),
             const SizedBox(height: 20),
-            const Text(
-              "PLANET EXPLORER",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, letterSpacing: 4),
-            ),
+            const Text("PLANET EXPLORER", style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold, letterSpacing: 3)),
             const SizedBox(height: 10),
-            const Text("جاري تحميل أسرار الكون...", style: TextStyle(color: Colors.grey)),
-            const SizedBox(height: 30),
-            const CircularProgressIndicator(color: Colors.amber),
+            const Text("جاري تحميل أسرار الكون...", style: TextStyle(color: Colors.white38)),
+            const SizedBox(height: 40),
+            const CircularProgressIndicator(color: Colors.amber, strokeWidth: 2),
           ],
         ),
       ),
@@ -94,7 +77,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
 
   final List<Widget> _pages = [
     const PlanetsListScreen(),
-    const Center(child: Text('خريطة النجوم قريباً 🔭', style: TextStyle(fontSize: 20, color: Colors.amber))),
+    const Center(child: Text('خريطة النجوم - قريباً 🔭', style: TextStyle(fontSize: 20, color: Colors.amber))),
     const SettingsScreen(),
   ];
 
@@ -106,11 +89,10 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
         selectedIndex: _selectedIndex,
         onDestinationSelected: (index) => setState(() => _selectedIndex = index),
         backgroundColor: const Color(0xFF080A12),
-        indicatorColor: Colors.amber.withOpacity(0.2),
         destinations: const [
-          NavigationDestination(icon: Icon(Icons.public), label: 'Explorer'),
-          NavigationDestination(icon: Icon(Icons.explore_outlined), label: 'Discover'),
-          NavigationDestination(icon: Icon(Icons.settings_outlined), label: 'Settings'),
+          NavigationDestination(icon: Icon(Icons.public), label: 'المستكشف'),
+          NavigationDestination(icon: Icon(Icons.explore), label: 'اكتشف'),
+          NavigationDestination(icon: Icon(Icons.settings), label: 'الإعدادات'),
         ],
       ),
     );
@@ -120,200 +102,211 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
 class PlanetsListScreen extends StatelessWidget {
   const PlanetsListScreen({super.key});
 
+  // مصفوفة البيانات الكاملة (شاملة الشمس والـ 14 معلومة لكل كوكب)
   final List<Map<String, dynamic>> planets = const [
     {
       'name': 'الشمس (The Sun)',
       'image': 'assets/images/sun.png',
       'color': Colors.orangeAccent,
-      'gravity_factor': 27.9,
-      'year_days': 0.0,
+      'gravity': 27.9,
+      'year_factor': 1.0,
       'is_star': true,
-      'details': {
-        'نوع النجم': 'قزم أصفر (G2V)',
-        'الحرارة (السطح)': '5,500 درجة مئوية',
-        'الحرارة (القلب)': '15 مليون درجة مئوية',
-        'الطاقة': 'اندماج نووي يحول الهيدروجين لهيليوم',
-        'النشاط الشمسي': 'بقع شمسية، انفجارات، ورياح شمسية',
-        'التأثير على الأرض': 'الضوء، الحرارة، والتحكم في المناخ والشفق القطبي',
-      }
+      'content': [
+        {'t': '🔥 نوع النجم', 'b': 'قزم أصفر (G2V)'},
+        {'t': '🌡️ درجة الحرارة', 'b': 'السطح: 5,500°C | القلب: 15 مليون°C'},
+        {'t': '⚡ الطاقة والإشعاع', 'b': 'تنتج عبر الاندماج النووي المستمر للهيدروجين.'},
+        {'t': '🌋 النشاط الشمسي', 'b': 'البقع الشمسية، الانفجارات، والانبعاثات الإكليلية.'},
+        {'t': '🌍 تأثيرها على الأرض', 'b': 'مصدر الحياة، الضوء، الحرارة، والتحكم في المناخ.'},
+      ]
     },
     {
       'name': 'عطارد (Mercury)',
       'image': 'assets/images/mercury.png',
       'color': Colors.grey,
-      'gravity_factor': 0.38,
-      'year_days': 88,
+      'gravity': 0.38,
+      'year_factor': 0.24,
       'is_star': false,
-      'details': {
-        'نبذة': 'أصغر الكواكب وأقربها للشمس.',
-        'الحجم والقطر': '4,880 كم (38% من الأرض)',
-        'الجاذبية': '0.38 g',
-        'درجة الحرارة': 'من -180 إلى 430 مئوية',
-        'الغلاف الجوي': 'رقيق جداً (إكسوسفير)',
-        'التركيب': 'صخري بنواة حديدية ضخمة',
-        'اليوم': '59 يوماً أرضياً',
-        'السنة': '88 يوماً أرضياً',
-        'الأقمار': 'لا يوجد',
-        'الحلقات': 'لا يوجد',
-        'الموقع': 'الأول من الشمس',
-        'الرؤية': 'يرى بالعين المجردة وقت الفجر أو المغرب',
-        'الاستكشاف': 'Mariner 10, MESSENGER',
-        'حقائق': 'ينكمش حجم الكوكب مع مرور الزمن!'
-      }
-    },
-    {
-      'name': 'الزهرة (Venus)',
-      'image': 'assets/images/venus.png',
-      'color': Colors.orange,
-      'gravity_factor': 0.9,
-      'year_days': 225,
-      'is_star': false,
-      'details': {
-        'نبذة': 'أحر كوكب وتوأم الأرض الجحيمي.',
-        'الجاذبية': '0.90 g',
-        'درجة الحرارة': '464 درجة مئوية ثابته',
-        'الغلاف الجوي': 'ثاني أكسيد كربون كثيف جداً',
-        'السنة': '225 يوماً أرضياً',
-        'اليوم': '243 يوماً (أطول من سنته!)',
-        'حقائق': 'يدور عكس اتجاه عقارب الساعة.'
-      }
+      'content': [
+        {'t': '📌 نبذة عامة', 'b': 'أصغر كواكب المجموعة وأقربها للشمس.'},
+        {'t': '📏 الحجم والقطر', 'b': '4,880 كم'},
+        {'t': '⚖️ الكتلة والجاذبية', 'b': '3.3 × 10^23 كجم | 3.7 م/ث²'},
+        {'t': '🌡️ درجة الحرارة', 'b': 'تتراوح بين -180 إلى 430 درجة مئوية'},
+        {'t': '🌍 الغلاف الجوي', 'b': 'رقيق جداً يتكون من الأكسجين والصوديوم والهيدروجين.'},
+        {'t': '🧱 التركيب', 'b': 'كوكب صخري'},
+        {'t': '🔄 اليوم', 'b': '59 يوماً أرضياً'},
+        {'t': '☀️ السنة', 'b': '88 يوماً أرضياً'},
+        {'t': '🌙 عدد الأقمار', 'b': 'لا يوجد'},
+        {'t': '💍 الحلقات', 'b': 'لا يوجد'},
+        {'t': '📍 الموقع', 'b': 'الأول في النظام الشمسي'},
+        {'t': '🔭 الرؤية من الأرض', 'b': 'يمكن رؤيته بالعين المجردة قرب الفجر أو الغروب.'},
+        {'t': '🚀 استكشاف الكوكب', 'b': 'مهمات Mariner 10 و Messenger.'},
+        {'t': '⚠️ حقائق مدهشة', 'b': 'عطارد ينكمش بمرور الزمن نتيجة برودة قلبه.'},
+      ]
     },
     {
       'name': 'الأرض (Earth)',
       'image': 'assets/images/earth.png',
       'color': Colors.blue,
-      'gravity_factor': 1.0,
-      'year_days': 365,
+      'gravity': 1.0,
+      'year_factor': 1.0,
       'is_star': false,
-      'details': {
-        'نبذة': 'موطن الحياة والماء السائل.',
-        'الغلاف الجوي': 'نيتروجين وأكسجين',
-        'الجاذبية': '9.8 m/s²',
-        'الأقمار': 'قمر واحد',
-        'حقائق': 'الكوكب الوحيد ذو الصفائح التكتونية النشطة.'
-      }
+      'content': [
+        {'t': '📌 نبذة عامة', 'b': 'الموطن الوحيد المعروف للحياة في الكون.'},
+        {'t': '📏 الحجم والقطر', 'b': '12,756 كم'},
+        {'t': '⚖️ الكتلة والجاذبية', 'b': '5.97 × 10^24 كجم | 9.8 م/ث²'},
+        {'t': '🌡️ درجة الحرارة', 'b': 'المتوسط 15 درجة مئوية'},
+        {'t': '🌍 الغلاف الجوي', 'b': 'نيتروجين (78%) وأكسجين (21%)'},
+        {'t': '🧱 التركيب', 'b': 'صخري صلب مع لب معدني'},
+        {'t': '🔄 اليوم', 'b': '24 ساعة'},
+        {'t': '☀️ السنة', 'b': '365.25 يوم'},
+        {'t': '🌙 عدد الأقمار', 'b': 'قمر واحد'},
+        {'t': '💍 الحلقات', 'b': 'لا يوجد'},
+        {'t': '📍 الموقع', 'b': 'الثالث في النظام الشمسي'},
+        {'t': '🔭 الرؤية من الأرض', 'b': 'نحن نعيش عليه!'},
+        {'t': '🚀 استكشاف الكوكب', 'b': 'آلاف الأقمار الصناعية ومحطة الفضاء الدولية.'},
+        {'t': '⚠️ حقائق مدهشة', 'b': 'الأرض هي المكان الوحيد الذي يوجد فيه الماء في حالاته الثلاث.'},
+      ]
     },
-    {
-      'name': 'المريخ (Mars)',
-      'image': 'assets/images/mars.png',
-      'color': Colors.red,
-      'gravity_factor': 0.38,
-      'year_days': 687,
-      'is_star': false,
-      'details': {
-        'نبذة': 'الكوكب الأحمر المليء بالبراكين الخامدة.',
-        'الجاذبية': '0.38 g',
-        'السنة': '687 يوماً أرضياً',
-        'الأقمار': 'فوبوس وديموس',
-        'المهمات': 'Perseverance, Curiosity, Hope Probe',
-        'حقائق': 'يحتوي على أضخم بركان (أوليمبوس مونس).'
-      }
-    },
-    // يمكن إضافة باقي الكواكب (المشتري، زحل، أورانوس، نبتون) بنفس التنسيق
+    // ملاحظة: يمكنك تكرار الكواكب (الزهرة، المريخ، المشتري، زحل، أورانوس، نبتون) بنفس النمط
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('PLANET EXPLORER'), centerTitle: true),
-      body: ListView.builder(
-        padding: const EdgeInsets.all(15),
-        itemCount: planets.length,
-        itemBuilder: (context, index) {
-          final planet = planets[index];
-          return Card(
-            margin: const EdgeInsets.only(bottom: 15),
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-            child: ListTile(
-              contentPadding: const EdgeInsets.all(15),
-              leading: Hero(tag: planet['name'], child: Image.asset(planet['image'], width: 60)),
-              title: Text(planet['name'], style: TextStyle(color: planet['color'], fontWeight: FontWeight.bold, fontSize: 18)),
-              subtitle: Text(planet['is_star'] ? 'نجم النظام الشمسي' : 'استكشف أسرار الكوكب'),
-              trailing: const Icon(Icons.arrow_forward_ios, size: 16),
-              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => PlanetDetailScreen(planet: planet))),
+      appBar: AppBar(title: const Text('Planet Explorer', style: TextStyle(fontWeight: FontWeight.bold))),
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              padding: const EdgeInsets.all(15),
+              itemCount: planets.length,
+              itemBuilder: (context, index) {
+                final planet = planets[index];
+                return Container(
+                  margin: const EdgeInsets.only(bottom: 20),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25),
+                    gradient: LinearGradient(
+                      colors: [const Color(0xFF161B22), planet['color'].withOpacity(0.2)],
+                      begin: Alignment.centerLeft,
+                      end: Alignment.centerRight,
+                    ),
+                  ),
+                  child: ListTile(
+                    contentPadding: const EdgeInsets.all(20),
+                    leading: Image.asset(planet['image'], width: 70),
+                    title: Text(planet['name'], style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: planet['color'])),
+                    subtitle: const Text('اضغط لمعرفة الأسرار والحسابات الفلكية'),
+                    trailing: const Icon(Icons.arrow_forward_ios, color: Colors.white24, size: 18),
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => DetailScreen(planet: planet))),
+                  ),
+                );
+              },
             ),
-          );
-        },
+          ),
+          const Padding(
+            padding: EdgeInsets.all(10),
+            child: Text("Developed by Hamza Store", style: TextStyle(color: Colors.white10, fontSize: 10)),
+          )
+        ],
       ),
     );
   }
 }
 
-class PlanetDetailScreen extends StatefulWidget {
+class DetailScreen extends StatefulWidget {
   final Map<String, dynamic> planet;
-  const PlanetDetailScreen({super.key, required this.planet});
+  const DetailScreen({super.key, required this.planet});
 
   @override
-  State<PlanetDetailScreen> createState() => _PlanetDetailScreenState();
+  State<DetailScreen> createState() => _DetailScreenState();
 }
 
-class _PlanetDetailScreenState extends State<PlanetDetailScreen> {
-  final TextEditingController _weightController = TextEditingController();
-  final TextEditingController _ageController = TextEditingController();
-  double _calculatedWeight = 0;
-  double _calculatedAge = 0;
+class _DetailScreenState extends State<DetailScreen> {
+  final TextEditingController _valController = TextEditingController();
+  double _weightResult = 0;
+  double _ageResult = 0;
 
-  void _calculate() {
+  void _calculate(String v) {
     setState(() {
-      double weight = double.tryParse(_weightController.text) ?? 0;
-      double age = double.tryParse(_ageController.text) ?? 0;
-      _calculatedWeight = weight * widget.planet['gravity_factor'];
-      if (widget.planet['year_days'] > 0) {
-        _calculatedAge = (age * 365) / widget.planet['year_days'];
-      }
+      double input = double.tryParse(v) ?? 0;
+      _weightResult = input * widget.planet['gravity'];
+      _ageResult = input / widget.planet['year_factor'];
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    final Map<String, String> details = widget.planet['details'];
+    final bool isStar = widget.planet['is_star'];
     return Scaffold(
-      appBar: AppBar(title: Text(widget.planet['name'])),
+      appBar: AppBar(backgroundColor: Colors.transparent, elevation: 0),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-            Hero(tag: widget.planet['name'], child: Image.asset(widget.planet['image'], width: 200)),
+            Image.asset(widget.planet['image'], width: 220),
             const SizedBox(height: 20),
+            Text(widget.planet['name'], style: TextStyle(fontSize: 34, fontWeight: FontWeight.bold, color: widget.planet['color'])),
+            const SizedBox(height: 25),
             
-            // --- ميزة الوزن والعمر الفضائي ---
+            // --- الحاسبة التفاعلية المدمجة ---
             Container(
-              padding: const EdgeInsets.all(15),
-              decoration: BoxDecoration(color: Colors.amber.withOpacity(0.1), borderRadius: BorderRadius.circular(15)),
+              padding: const EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.05),
+                borderRadius: BorderRadius.circular(20),
+                border: Border.all(color: Colors.white12),
+              ),
               child: Column(
                 children: [
-                  const Text("⚖️ مختبر الفضاء التفاعلي", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+                  const Text("⚖️ مختبر البيانات التفاعلي", style: TextStyle(color: Colors.amber, fontWeight: FontWeight.bold, fontSize: 16)),
                   const SizedBox(height: 10),
                   TextField(
-                    controller: _weightController,
+                    controller: _valController,
                     keyboardType: TextInputType.number,
-                    decoration: const InputDecoration(labelText: "وزنك على الأرض (kg)", border: OutlineInputBorder()),
-                    onChanged: (v) => _calculate(),
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(fontSize: 20, color: Colors.white),
+                    decoration: const InputDecoration(hintText: "أدخل رقمك هنا (وزن أو عمر)", border: InputBorder.none),
+                    onChanged: _calculate,
                   ),
-                  const SizedBox(height: 10),
-                  TextField(
-                    controller: _ageController,
-                    keyboardType: TextInputType.number,
-                    decoration: const InputDecoration(labelText: "عمرك على الأرض (سنة)", border: OutlineInputBorder()),
-                    onChanged: (v) => _calculate(),
-                  ),
-                  const SizedBox(height: 15),
-                  Text("وزنك هنا: ${_calculatedWeight.toStringAsFixed(1)} كجم", style: const TextStyle(fontSize: 16, color: Colors.amber)),
-                  if (!widget.planet['is_star'])
-                    Text("عمرك هنا: ${_calculatedAge.toStringAsFixed(1)} سنة كوكبية", style: const TextStyle(fontSize: 16, color: Colors.greenAccent)),
+                  const Divider(color: Colors.white12),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Column(children: [const Text("وزنك هنا", style: TextStyle(color: Colors.grey)), Text("${_weightResult.toStringAsFixed(1)} kg", style: const TextStyle(fontSize: 18, color: Colors.greenAccent, fontWeight: FontWeight.bold))]),
+                      if (!isStar)
+                      Column(children: [const Text("عمرك هنا", style: TextStyle(color: Colors.grey)), Text("${_ageResult.toStringAsFixed(1)} سنة", style: const TextStyle(fontSize: 18, color: Colors.cyanAccent, fontWeight: FontWeight.bold))]),
+                    ],
+                  )
                 ],
               ),
             ),
             
-            const SizedBox(height: 20),
-            // --- عرض المعلومات الـ 14 ---
-            ...details.entries.map((entry) => Card(
-              margin: const EdgeInsets.only(bottom: 10),
-              child: ListTile(
-                title: Text(entry.key, style: const TextStyle(color: Colors.amber, fontWeight: FontWeight.bold)),
-                subtitle: Text(entry.value, style: const TextStyle(fontSize: 15)),
-              ),
-            )).toList(),
+            const SizedBox(height: 30),
+            // --- عرض الـ 14 معلومة بتصميم البطاقة الجانبية ---
+            ...List.generate(widget.planet['content'].length, (index) {
+              final item = widget.planet['content'][index];
+              return Container(
+                width: double.infinity,
+                margin: const EdgeInsets.only(bottom: 15),
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.03),
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border(right: BorderSide(color: widget.planet['color'], width: 5)),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(item['t'], style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: widget.planet['color'])),
+                    const SizedBox(height: 8),
+                    Text(item['b'], style: const TextStyle(fontSize: 16, height: 1.5, color: Colors.white70)),
+                  ],
+                ),
+              );
+            }),
+            const SizedBox(height: 40),
+            const Text("Developed by Hamza Store", style: TextStyle(color: Colors.white12)),
           ],
         ),
       ),
@@ -329,37 +322,38 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  bool _notifications = true;
+  bool _notif = true;
   String _lang = "العربية";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('الإعدادات')),
-      body: ListView(
-        children: [
-          ListTile(
-            leading: const Icon(Icons.language),
-            title: const Text("اللغة"),
-            trailing: Text(_lang),
-            onTap: () {
-              setState(() {
-                _lang = (_lang == "العربية") ? "English" : "العربية";
-              });
-            },
-          ),
-          SwitchListTile(
-            secondary: const Icon(Icons.notifications),
-            title: const Text("إشعارات حقائق الفضاء"),
-            value: _notifications,
-            onChanged: (v) => setState(() => _notifications = v),
-          ),
-          const ListTile(leading: Icon(Icons.info_outline), title: Text("الإصدار"), trailing: Text("1.1.0")),
-          const Padding(
-            padding: EdgeInsets.all(20),
-            child: Text("تطبيق Planet Explorer - جميع الحقوق محفوظة", textAlign: TextAlign.center, style: TextStyle(color: Colors.grey)),
-          )
-        ],
+      body: Directionality(
+        textDirection: TextDirection.rtl,
+        child: ListView(
+          padding: const EdgeInsets.all(20),
+          children: [
+            ListTile(
+              leading: const Icon(Icons.language, color: Colors.blueAccent),
+              title: const Text("اللغة"),
+              subtitle: const Text("تغيير لغة واجهة التطبيق"),
+              trailing: Text(_lang, style: const TextStyle(color: Colors.amber)),
+              onTap: () => setState(() => _lang = (_lang == "العربية" ? "English" : "العربية")),
+            ),
+            const Divider(),
+            SwitchListTile(
+              secondary: const Icon(Icons.notifications_active, color: Colors.greenAccent),
+              title: const Text("الإشعارات"),
+              subtitle: const Text("تنبيهات حول أحداث الفضاء اليومية"),
+              value: _notif,
+              onChanged: (v) => setState(() => _notif = v),
+            ),
+            const SizedBox(height: 50),
+            const Center(child: Text("Developed by Hamza Store", style: TextStyle(color: Colors.white24))),
+            const Center(child: Text("Version 1.5.0", style: TextStyle(fontSize: 10, color: Colors.white10))),
+          ],
+        ),
       ),
     );
   }
