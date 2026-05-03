@@ -35,7 +35,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
 
   final List<Widget> _pages = [
     const PlanetsListScreen(),
-    const Center(child: Text('Star Map coming soon ✨', style: TextStyle(fontSize: 20))),
+    const Center(child: Text('Star Map Coming Soon 🔭', style: TextStyle(fontSize: 20, color: Colors.amber))),
     const SettingsScreen(),
   ];
 
@@ -44,21 +44,23 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     return Scaffold(
       body: _pages[_selectedIndex],
       bottomSheet: Container(
-        height: 50,
+        height: 55,
         width: double.infinity,
         color: Colors.black,
         child: const Center(
           child: Text('AD SPACE (Google AdMob)', 
-            style: TextStyle(color: Colors.white24, fontSize: 11)),
+            style: TextStyle(color: Colors.white24, fontSize: 11, letterSpacing: 1.2)),
         ),
       ),
       bottomNavigationBar: NavigationBar(
         selectedIndex: _selectedIndex,
         onDestinationSelected: (index) => setState(() => _selectedIndex = index),
+        backgroundColor: const Color(0xFF080A12),
+        indicatorColor: Colors.amber.withOpacity(0.2),
         destinations: const [
-          NavigationDestination(icon: Icon(Icons.auto_stories), label: 'Explorer'),
-          NavigationDestination(icon: Icon(Icons.explore_outlined), label: 'Discover'),
-          NavigationDestination(icon: Icon(Icons.settings_outlined), label: 'Settings'),
+          NavigationDestination(icon: Icon(Icons.public, color: Colors.blueAccent), label: 'Explorer'),
+          NavigationDestination(icon: Icon(Icons.explore_outlined, color: Colors.greenAccent), label: 'Discover'),
+          NavigationDestination(icon: Icon(Icons.settings_outlined, color: Colors.grey), label: 'Settings'),
         ],
       ),
     );
@@ -73,21 +75,19 @@ class PlanetsListScreen extends StatelessWidget {
       'name': 'Earth (الأرض)',
       'image': 'assets/images/earth.png',
       'color': Colors.blue,
+      'tagline': 'The Cradle of Life',
       'content': [
-        {'title': '1. ملحمة الوجود والنشأة', 'body': 'بدأت رحلة الأرض منذ حوالي 4.54 مليار سنة، حيث نشأت من تجمع الغبار والغاز الكوني حول الشمس الوليدة. مرت بمراحل قاسية من الاصطدامات النيزكية حتى تكون القمر، ثم بدأت تبرد تدريجياً لتشكل القشرة الصخرية والمحيطات الأولى.', 'color': Colors.blue},
-        {'title': '2. المكانة الفلكية والأرقام', 'body': '• البعد عن الشمس: 150 مليون كم (المسافة الذهبية).\n• قطر الكوكب: 12,756 كم.\n• المحيط: يبلغ طول محيط الأرض حول خط الاستواء حوالي 40,075 كم.', 'color': Colors.green},
-        {'title': '3. البنية الداخلية: طبقات الكوكب', 'body': 'القشرة: الطبقة الخارجية الرقيقة.\nالوشاح: طبقة شبه صلبة تتحرك وتسبب حركة القارات.\nاللب (المركز): يتكون من حديد ونيكل، وهو المسؤول عن توليد المجال المغناطيسي الحامي.', 'color': Colors.orange},
-        {'title': '4. الأغلفة الحيوية الأربعة', 'body': 'تعتمد الأرض على توازن الغلاف الجوي (أكسجين)، المائي (71% مياه)، الصخري (القارات)، والحيوي (الكائنات الحية).', 'color': Colors.cyan},
+        {'title': '1. قصة الخلق والنشأة', 'body': 'بدأت رحلة الأرض منذ حوالي 4.54 مليار سنة، نشأت من تجمع الغبار والغاز الكوني حول الشمس الوليدة.', 'color': Colors.blue},
+        {'title': '2. المكانة الفلكية', 'body': 'البعد عن الشمس: 150 مليون كم (المسافة الذهبية). القطر الاستوائي: 12,756 كم.', 'color': Colors.greenAccent},
       ]
     },
     {
       'name': 'Mars (المريخ)',
       'image': 'assets/images/mars.png',
       'color': Colors.red,
+      'tagline': 'The Red Frontier',
       'content': [
-        {'title': '1. من الكوكب الرطب إلى الصحراء', 'body': 'كان المريخ قديماً يضم أنهاراً وبحاراً غلافاً جوياً سميكاً. فقد لبه النشط فضعف مجاله المغناطيسي، وسرقت الرياح الشمسية هواءه ليتحول لصحراء حمراء متجمدة.', 'color': Colors.red},
-        {'title': '2. الأرقام والجاذبية', 'body': '• القطر: 6,779 كم.\n• الجاذبية: 38% من جاذبية الأرض.\n• اليوم المريخي: 24 ساعة و39 دقيقة.', 'color': Colors.amber},
-        {'title': '3. تضاريس الأرقام القياسية', 'body': 'يضم "أوليمبوس مونس"، وهو بركان بارتفاع 25 كم، و"وادي البحارة" الذي يمتد بطول قارة كاملة.', 'color': Colors.deepOrange},
+        {'title': '1. لغز الكوكب الأحمر', 'body': 'كان المريخ قديماً يضم أنهاراً وبحاراً، لكنه تحول لصحراء متجمدة غنية بأكسيد الحديد.', 'color': Colors.redAccent},
       ]
     },
   ];
@@ -98,25 +98,28 @@ class PlanetsListScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Planet Explorer', style: TextStyle(fontWeight: FontWeight.bold)),
         centerTitle: true,
-        actions: [IconButton(icon: const Icon(Icons.search), onPressed: () {})],
         backgroundColor: Colors.transparent,
       ),
       body: ListView.builder(
-        padding: const EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 65),
+        padding: const EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 80),
         itemCount: planets.length,
         itemBuilder: (context, index) {
           final planet = planets[index];
           return Card(
-            elevation: 10,
-            margin: const EdgeInsets.only(bottom: 15),
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            elevation: 12,
+            margin: const EdgeInsets.only(bottom: 20),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
             child: InkWell(
               onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => PlanetDetailScreen(planet: planet))),
               child: Container(
-                padding: const EdgeInsets.all(15),
+                padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  gradient: LinearGradient(colors: [Colors.black, planet['color'].withOpacity(0.15)]),
+                  borderRadius: BorderRadius.circular(25),
+                  gradient: LinearGradient(
+                    colors: [const Color(0xFF0D1117), planet['color'].withOpacity(0.1)],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
                 ),
                 child: Row(
                   children: [
@@ -127,7 +130,7 @@ class PlanetsListScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(planet['name'], style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: planet['color'])),
-                          const Text('Click to explore secrets...', style: TextStyle(color: Colors.grey, fontSize: 12)),
+                          Text(planet['tagline'], style: const TextStyle(color: Colors.grey, fontSize: 13)),
                         ],
                       ),
                     ),
@@ -163,7 +166,7 @@ class PlanetDetailScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     boxShadow: [
-                      BoxShadow(color: planet['color'].withOpacity(0.4), blurRadius: 80, spreadRadius: 10),
+                      BoxShadow(color: planet['color'].withOpacity(0.4), blurRadius: 100, spreadRadius: 5),
                     ],
                   ),
                   child: Image.asset(planet['image'], width: 220, fit: BoxFit.contain),
@@ -176,11 +179,12 @@ class PlanetDetailScreen extends StatelessWidget {
             ...content.map((item) => Container(
               width: double.infinity,
               margin: const EdgeInsets.only(bottom: 25),
-              padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.all(22),
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.04),
+                color: Colors.white.withOpacity(0.03),
                 borderRadius: BorderRadius.circular(20),
-                border: Border.left(color: item['color'], width: 5),
+                // تم تصحيح الخطأ البرمجي هنا
+                border: Border(left: BorderSide(color: item['color'], width: 6)),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -205,13 +209,7 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Settings')),
-      body: ListView(
-        children: [
-          const ListTile(leading: Icon(Icons.language), title: Text('Language'), trailing: Text('Arabic/English')),
-          ListTile(leading: const Icon(Icons.notifications_outlined), title: const Text('Notifications'), trailing: Switch(value: true, onChanged: (v){})),
-          const ListTile(leading: Icon(Icons.info_outline), title: Text('About App')),
-        ],
-      ),
+      body: const Center(child: Text('Developed by Hamza Store')),
     );
   }
 }
