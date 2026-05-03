@@ -58,9 +58,9 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
         backgroundColor: const Color(0xFF080A12),
         indicatorColor: Colors.amber.withOpacity(0.2),
         destinations: const [
-          NavigationDestination(icon: Icon(Icons.public, color: Colors.blueAccent), label: 'Explorer'),
-          NavigationDestination(icon: Icon(Icons.explore_outlined, color: Colors.greenAccent), label: 'Discover'),
-          NavigationDestination(icon: Icon(Icons.settings_outlined, color: Colors.grey), label: 'Settings'),
+          NavigationDestination(icon: Icon(Icons.public), label: 'Explorer'),
+          NavigationDestination(icon: Icon(Icons.explore_outlined), label: 'Discover'),
+          NavigationDestination(icon: Icon(Icons.settings_outlined), label: 'Settings'),
         ],
       ),
     );
@@ -70,65 +70,97 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
 class PlanetsListScreen extends StatelessWidget {
   const PlanetsListScreen({super.key});
 
-  // قائمة الكواكب الكاملة مع المعلومات المعمقة
   final List<Map<String, dynamic>> planets = const [
     {
-      'name': 'Earth (الأرض)',
-      'image': 'assets/images/earth.png',
-      'color': Colors.blue,
-      'tagline': 'The Cradle of Life',
+      'name': 'The Sun (الشمس)',
+      'image': 'assets/images/sun.png',
+      'color': Colors.orangeAccent,
+      'tagline': 'قلب النظام الشمسي ونجم الحياة',
       'content': [
-        {'title': '1. قصة الخلق والنشأة', 'body': 'بدأت رحلة الأرض منذ حوالي 4.54 مليار سنة، نشأت من تجمع الغبار والغاز الكوني حول الشمس الوليدة. مرت بمراحل قاسية حتى تكون القمر، ثم بردت لتشكل القشرة والمحيطات.', 'color': Colors.blue},
-        {'title': '2. المكانة الفلكية', 'body': 'البعد عن الشمس: 150 مليون كم. القطر الاستوائي: 12,756 كم. وهي الكوكب الوحيد المعروف بوجود حياة.', 'color': Colors.greenAccent},
-        {'title': '3. الغلاف الجوي والدرع', 'body': 'يحمينا غلافنا الجوي من النيازك، بينما يحمينا المجال المغناطيسي من الرياح الشمسية القاتلة.', 'color': Colors.cyanAccent},
-      ]
-    },
-    {
-      'name': 'Mars (المريخ)',
-      'image': 'assets/images/mars.png',
-      'color': Colors.red,
-      'tagline': 'The Red Frontier',
-      'content': [
-        {'title': '1. لغز الكوكب الأحمر', 'body': 'كان المريخ قديماً يضم أنهاراً وبحاراً، لكنه تحول لصحراء متجمدة غنية بأكسيد الحديد (الصدأ).', 'color': Colors.redAccent},
-        {'title': '2. الأرقام والقياسات', 'body': 'القطر: 6,779 كم. الجاذبية: 38% من جاذبية الأرض. اليوم المريخي: 24 ساعة و39 دقيقة.', 'color': Colors.amberAccent},
-      ]
-    },
-    {
-      'name': 'Jupiter (المشتري)',
-      'image': 'assets/images/jupiter.png',
-      'color': Colors.orange,
-      'tagline': 'The Gas Giant',
-      'content': [
-        {'title': '1. ملك الكواكب', 'body': 'أضخم كواكب المجموعة الشمسية. يتكون معظمه من الهيدروجين والهيليوم، ولا يمتلك سطحاً صلباً للوقوف عليه.', 'color': Colors.orangeAccent},
-        {'title': '2. البقعة الحمراء العظيمة', 'body': 'يتميز بإعصار ضخم مستمر منذ مئات السنين، حجمه أكبر من كوكب الأرض مرتين.', 'color': Colors.red},
-      ]
-    },
-    {
-      'name': 'Saturn (زحل)',
-      'image': 'assets/images/saturn.png',
-      'color': Colors.amber,
-      'tagline': 'Jewel of the Solar System',
-      'content': [
-        {'title': '1. نظام الحلقات المذهل', 'body': 'يشتهر بحلقاته المكونة من كتل الجليد والصخور والغبار التي تدور حوله بجمال أخاذ.', 'color': Colors.amberAccent},
-        {'title': '2. كثافة منخفضة', 'body': 'زحل كوكب خفيف جداً، لدرجة أنه لو وجد محيط مائي ضخم بما يكفي، فإن زحل سيطفو فوقه!', 'color': Colors.yellowAccent},
+        {'title': '1. ماهية الشمس ونشأتها', 'body': 'الشمس نجم من النوع القزم الأصفر، تشكلت قبل 4.6 مليار سنة. تمثل كتلتها 99.8% من كتلة النظام الشمسي بالكامل، وجاذبيتها هي التي تربط الكواكب في مداراتها.', 'color': Colors.orange},
+        {'title': '2. مفاعل نووي كوني', 'body': 'تنتج الشمس طاقتها من خلال الاندماج النووي، حيث تدمج ذرات الهيدروجين لتكوين الهيليوم في لبها، وتصل حرارة المركز إلى 15 مليون درجة مئوية.', 'color': Colors.redAccent},
+        {'title': '3. الرياح الشمسية والبقع', 'body': 'تطلق الشمس تيارات من الجسيمات المشحونة تسمى الرياح الشمسية. وتظهر على سطحها بقع داكنة أبرد قليلاً تسمى البقع الشمسية، وهي مناطق نشاط مغناطيسي كثيف.', 'color': Colors.amberAccent},
+        {'title': '4. مستقبل الشمس', 'body': 'بعد حوالي 5 مليارات سنة، ستتحول الشمس إلى عملاق أحمر يبتلع الكواكب الداخلية، قبل أن تنتهي كقزم أبيض هادئ.', 'color': Colors.deepOrange},
       ]
     },
     {
       'name': 'Mercury (عطارد)',
       'image': 'assets/images/mercury.png',
       'color': Colors.grey,
-      'tagline': 'The Swift Planet',
+      'tagline': 'أصغر الكواكب وأقربها للشمس',
       'content': [
-        {'title': '1. الأقرب للشمس', 'body': 'أصغر كوكب وأقربها للشمس، يتميز بتقلبات حرارية هائلة بين الليل والنهار.', 'color': Colors.grey},
+        {'title': '1. التكوين الجيولوجي', 'body': 'كوكب صخري صغير، نواته الحديدية ضخمة جداً مقارنة بحجمه. لا يمتلك أي أقمار أو غلاف جوي يحميه.', 'color': Colors.grey},
+        {'title': '2. سنة قصيرة ويوم طويل', 'body': 'يدور عطارد حول الشمس بسرعة هائلة، فسنته 88 يوماً فقط، لكنه يدور حول نفسه ببطء، فيومه يعادل 59 يوماً أرضياً.', 'color': Colors.blueGrey},
       ]
     },
     {
       'name': 'Venus (الزهرة)',
       'image': 'assets/images/venus.png',
-      'color': Colors.brown,
-      'tagline': 'The Veiled Planet',
+      'color': Colors.orange,
+      'tagline': 'أحر كوكب في النظام الشمسي',
       'content': [
-        {'title': '1. توأم الأرض الجحيمي', 'body': 'يشبه الأرض في الحجم، لكنه أحر كوكب بسبب الاحتباس الحراري، حيث تصل حرارته لـ 470 درجة مئوية.', 'color': Colors.orange},
+        {'title': '1. الاحتباس الحراري', 'body': 'غلافه الجوي كثيف جداً لدرجة أنه يحبس الحرارة، مما يجعل سطحه ساخناً لدرجة صهر الرصاص (470 درجة مئوية).', 'color': Colors.orange},
+        {'title': '2. شروق من الغرب', 'body': 'يدور الزهرة عكس اتجاه معظم الكواكب، لذا تشرق الشمس فيه من الغرب وتغرب في الشرق.', 'color': Colors.redAccent},
+      ]
+    },
+    {
+      'name': 'Earth (الأرض)',
+      'image': 'assets/images/earth.png',
+      'color': Colors.blue,
+      'tagline': 'الواحة الزرقاء الوحيدة',
+      'content': [
+        {'title': '1. بيئة مثالية', 'body': 'تمتلك الغلاف الجوي والماء السائل والمجال المغناطيسي، وهي العناصر الثلاثة الضرورية لنشوء واستمرار الحياة.', 'color': Colors.blue},
+        {'title': '2. تكتونية الصفائح', 'body': 'الأرض هي الكوكب الوحيد الذي يمتلك صفائح تكتونية نشطة تعيد تدوير الكربون وتنظم المناخ عبر ملايين السنين.', 'color': Colors.greenAccent},
+      ]
+    },
+    {
+      'name': 'Mars (المريخ)',
+      'image': 'assets/images/mars.png',
+      'color': Colors.red,
+      'tagline': 'الكوكب الأحمر المليء بالأسرار',
+      'content': [
+        {'title': '1. المناخ القديم', 'body': 'تشير الوديان الجافة إلى أن المريخ كان يوماً ما دافئاً ورطباً ببحيرات وأنهار جارية.', 'color': Colors.red},
+        {'title': '2. جبال وأودية عملاقة', 'body': 'يحتوي على جبل أوليمبوس، أعلى قمة في النظام الشمسي، ووادي مارينر الذي لو كان على الأرض لغطى المسافة بين نيويورك ولوس أنجلوس.', 'color': Colors.orangeAccent},
+      ]
+    },
+    {
+      'name': 'Jupiter (المشتري)',
+      'image': 'assets/images/jupiter.png',
+      'color': Colors.orangeAccent,
+      'tagline': 'سيد العمالقة وأسرع الكواكب دوراناً',
+      'content': [
+        {'title': '1. بنية كوكبية ضخمة', 'body': 'لو كان المشتري أكثر ضخامة بـ 80 مرة، لربما تحول إلى نجم. هو المكنسة الكهربائية للنظام الشمسي بسبب جاذبيته التي تبتلع المذنبات.', 'color': Colors.orange},
+        {'title': '2. أقمار غاليليو', 'body': 'يمتلك أكثر من 90 قمراً، أشهرها "أوروبا" الذي يعتقد العلماء بوجود محيط مائي تحت قشرته الجليدية.', 'color': Colors.amber},
+      ]
+    },
+    {
+      'name': 'Saturn (زحل)',
+      'image': 'assets/images/saturn.png',
+      'color': Colors.amber,
+      'tagline': 'الجمال الأخاذ بنظام حلقي فريد',
+      'content': [
+        {'title': '1. أصل الحلقات', 'body': 'يعتقد أن الحلقات هي بقايا أقمار أو مذنبات تحطمت بفعل جاذبية زحل قبل ملايين السنين.', 'color': Colors.amberAccent},
+        {'title': '2. قمر تيتان', 'body': 'قمره تيتان هو الوحيد الذي يمتلك غلافاً جوياً كثيفاً وسحباً وأمطاراً من الميثان السائل.', 'color': Colors.yellowAccent},
+      ]
+    },
+    {
+      'name': 'Uranus (أورانوس)',
+      'image': 'assets/images/uranus.png',
+      'color': Colors.cyan,
+      'tagline': 'العملاق الجليدي البارد',
+      'content': [
+        {'title': '1. المحور المائل', 'body': 'يميل أورانوس بزاوية 98 درجة، مما يجعله يبدو وكأنه يتدحرج في مداره بدلاً من الدوران العادي.', 'color': Colors.cyanAccent},
+        {'title': '2. الألماس المطر', 'body': 'بسبب الضغط الهائل، يعتقد العلماء أن الميثان في أعماق أورانوس ونبتون قد يتحول إلى ألماس يتساقط كالمطر.', 'color': Colors.blueAccent},
+      ]
+    },
+    {
+      'name': 'Neptune (نبتون)',
+      'image': 'assets/images/neptune.png',
+      'color': Colors.blueAccent,
+      'tagline': 'أبعد العوالم وأشدها رياحاً',
+      'content': [
+        {'title': '1. الرياح الفوق صوتية', 'body': 'تصل سرعة الرياح في نبتون إلى 2100 كم في الساعة، وهي أسرع رياح مسجلة في أي كوكب.', 'color': Colors.blue},
+        {'title': '2. اكتشاف رياضي', 'body': 'نبتون هو الكوكب الوحيد الذي تم اكتشافه بالحسابات الرياضية قبل أن يُرى بالتلسكوب.', 'color': Colors.indigoAccent},
       ]
     },
   ];
@@ -156,9 +188,7 @@ class PlanetsListScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(25),
-                  gradient: LinearGradient(
-                    colors: [const Color(0xFF0D1117), planet['color'].withOpacity(0.1)],
-                  ),
+                  gradient: LinearGradient(colors: [const Color(0xFF0D1117), planet['color'].withOpacity(0.1)]),
                 ),
                 child: Row(
                   children: [
@@ -168,8 +198,8 @@ class PlanetsListScreen extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(planet['name'], style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: planet['color'])),
-                          Text(planet['tagline'], style: const TextStyle(color: Colors.grey, fontSize: 13)),
+                          Text(planet['name'], style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: planet['color'])),
+                          Text(planet['tagline'], style: const TextStyle(color: Colors.grey, fontSize: 12)),
                         ],
                       ),
                     ),
@@ -202,12 +232,7 @@ class PlanetDetailScreen extends StatelessWidget {
               child: Hero(
                 tag: planet['name'],
                 child: Container(
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    boxShadow: [
-                      BoxShadow(color: planet['color'].withOpacity(0.4), blurRadius: 100, spreadRadius: 5),
-                    ],
-                  ),
+                  decoration: BoxDecoration(shape: BoxShape.circle, boxShadow: [BoxShadow(color: planet['color'].withOpacity(0.4), blurRadius: 100, spreadRadius: 5)]),
                   child: Image.asset(planet['image'], width: 220, fit: BoxFit.contain),
                 ),
               ),
@@ -243,6 +268,17 @@ class PlanetDetailScreen extends StatelessWidget {
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
 
+  void _showAction(BuildContext context, String title, String message) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(title),
+        content: Text(message),
+        actions: [TextButton(onPressed: () => Navigator.pop(context), child: const Text('Close'))],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -250,12 +286,33 @@ class SettingsScreen extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(15),
         children: [
-          const ListTile(leading: Icon(Icons.language, color: Colors.blue), title: Text('Language'), trailing: Text('Arabic/English')),
-          ListTile(leading: const Icon(Icons.notifications_active, color: Colors.green), title: const Text('Notifications'), trailing: Switch(value: true, onChanged: (v){})),
-          const ListTile(leading: Icon(Icons.star, color: Colors.amber), title: Text('Rate App')),
-          const ListTile(leading: Icon(Icons.info, color: Colors.grey), title: Text('About App')),
-          const SizedBox(height: 40),
-          const Center(child: Text('Version 1.0.0\nDeveloped for Space Lovers', style: TextStyle(color: Colors.white24), textAlign: TextAlign.center)),
+          ListTile(
+            leading: const Icon(Icons.language, color: Colors.blue),
+            title: const Text('Language (اللغة)'),
+            subtitle: const Text('العربية حالياً'),
+            onTap: () => _showAction(context, 'Language', 'ستتوفر اللغات الإضافية في التحديث القادم!'),
+          ),
+          ListTile(
+            leading: const Icon(Icons.notifications_active, color: Colors.green),
+            title: const Text('Daily Facts Notification'),
+            trailing: Switch(value: true, onChanged: (v) {}),
+          ),
+          ListTile(
+            leading: const Icon(Icons.star, color: Colors.amber),
+            title: const Text('Rate on Play Store'),
+            onTap: () => _showAction(context, 'Rating', 'شكراً لدعمك! سيتم نقلك للمتجر عند النشر.'),
+          ),
+          const Divider(color: Colors.white10),
+          ListTile(
+            leading: const Icon(Icons.info_outline, color: Colors.grey),
+            title: const Text('App Version'),
+            trailing: const Text('1.0.2'),
+          ),
+          const SizedBox(height: 50),
+          const Opacity(
+            opacity: 0.3,
+            child: Text('Developed for Science & Discovery', textAlign: TextAlign.center),
+          ),
         ],
       ),
     );
