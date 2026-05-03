@@ -8,15 +8,9 @@ android {
     namespace "com.example.planets_app"
     compileSdk 34
 
-    defaultConfig {
-        applicationId "com.example.planets_app"
-        minSdk 21
-        targetSdk 34
-        versionCode 1
-        versionName "1.0"
-    }
-
     compileOptions {
+        // السطر القادم هو الأهم لحل مشكلة الإشعارات
+        coreLibraryDesugaringEnabled true
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
@@ -24,8 +18,21 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    defaultConfig {
+        applicationId "com.example.planets_app"
+        minSdk 21
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+    }
 }
 
 flutter {
     source '../..'
+}
+
+dependencies {
+    // هذا السطر يكمل حل مشكلة الإشعارات ويسمح بالبناء الناجح
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.3'
 }
