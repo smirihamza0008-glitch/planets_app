@@ -82,6 +82,7 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 }
+
 class MainNavigation extends StatefulWidget {
   final bool isArabic;
   final VoidCallback onLangToggle;
@@ -157,6 +158,7 @@ class SettingsScreen extends StatelessWidget {
     );
   }
 }
+
 class ExplorerScreen extends StatelessWidget {
   final bool isArabic;
   const ExplorerScreen({super.key, required this.isArabic});
@@ -263,6 +265,7 @@ class DetailsScreen extends StatelessWidget {
     );
   }
 }
+
 class AppData {
   static List<Map<String, dynamic>> getPlanets(bool isArabic) {
     if (isArabic) {
@@ -319,7 +322,7 @@ class AppData {
           "info": {
             "📌 نبذة عامة": "أسخن كوكب في المجموعة بسبب الاحتباس الحراري 🌋",
             "📏 الحجم والقطر": "قطره 12,104 كم، وهو قريب جداً من حجم كوكبنا 📏",
-            "⚖️ الكتلة والجاذبية": "كتلته 4.86 × 10²⁴ كجم، وجاذبيته 8.87 m/s² ⚓",
+            "⚖️ الكتلة والجاذبية": "كتلته 4.86 × 10²⁴ كجم، وجاذبيتها 8.87 m/s² ⚓",
             "🌡️ درجة الحرارة": "تصل إلى 462 درجة مئوية، وهي كافية لصهر الرصاص 🔥",
             "🌍 الغلاف الجوي": "كثيف جداً وثقيل يتكون من ثاني أكسيد الكربون ☁️",
             "🧱 التركيب": "كوكب صخري بقلب حديدي وسطح مليء بالبراكين 🧱",
@@ -333,14 +336,6 @@ class AppData {
             "⚠️ حقائق مدهشة": "يدور الزهرة حول نفسه من الشرق إلى الغرب (عكس الأرض) ⚠️"
           }
         },
-      ];
-    } else {
-      return [
-        // سيتم وضع البيانات الإنجليزية بنفس النمط في الجزء السادس
-      ];
-    }
-  }
-}
         {
           "name": "الأرض",
           "image": "assets/images/earth.png",
@@ -473,213 +468,209 @@ class AppData {
             "⚠️ حقائق مدهشة": "الرياح على نبتون تتجاوز سرعتها 2,100 كم في الساعة! ⚠️",
             "🌌 الميزة": "نبتون هو الكوكب الوحيد الذي تم اكتشافه بالحسابات الرياضية 🌌"
           }
-        },
-      ]; // إغلاق القائمة العربية هنا
+        }
+      ];
     } else {
-      return [
-        // هنا سيبدأ الجزء الثامن (البيانات باللغة الإنجليزية)
       return [
         {
           "name": "The Sun",
           "image": "assets/images/sun.png",
           "color": Colors.orange,
-          "description": "The central star that provides our planet with the light and heat necessary for life ☀️",
+          "description": "The central star that provides our planet with light and heat ☀️",
           "info": {
             "📌 Overview": "A yellow dwarf star at the heart of our solar system 🌟",
-            "📏 Size/Diameter": "1.39 million km, 109 times the diameter of Earth 📏",
+            "📏 Size/Diameter": "1.39 million km, 109 times Earth's diameter 📏",
             "⚖️ Mass/Gravity": "Mass: 1.98 × 10³⁰ kg | Gravity: 274 m/s² ⚓",
-            "🌡️ Temperature": "The core reaches 15 million degrees Celsius 🔥",
-            "🌍 Atmosphere": "Composed of the photosphere, chromosphere, and corona ☁️",
-            "🧱 Composition": "Mainly hydrogen (73%) and helium (25%) 🧪",
-            "🔄 Rotation (Day)": "Rotates on its axis every 25 to 35 Earth days 🔄",
-            "☀️ Orbit (Year)": "Takes 230 million years to orbit the galactic center 🌌",
-            "🌙 Moons": "The center of gravity for all planets and objects 🚫",
-            "💍 Rings": "No rings, but possesses a massive luminous corona 💍",
-            "📍 Location": "Located exactly at the center of the solar system 📍",
-            "🔭 Visibility": "The brightest object in Earth's sky during the day 🔭",
-            "🚀 Exploration": "Parker Solar Probe and SOHO observatory 🚀",
-            "⚠️ Fun Fact": "The Sun contains 99.8% of the total mass of the solar system ⚠️"
+            "🌡️ Temperature": "Reaches 15 million degrees Celsius at the core 🔥",
+            "🌍 Atmosphere": "Composed of photosphere, chromosphere, and corona ☁️",
+            "🧱 Composition": "Mainly hydrogen and helium 🧪",
+            "🔄 Day": "Rotates every 25 to 35 Earth days 🔄",
+            "☀️ Year": "Takes 230 million years to orbit the galaxy 🌌",
+            "🌙 Moons": "Governs all objects in the solar system 🚫",
+            "💍 Rings": "No rings, but a massive luminous corona 💍",
+            "📍 Location": "Center of the solar system 📍",
+            "🔭 Visibility": "The brightest object in our daytime sky 🔭",
+            "🚀 Exploration": "Parker Solar Probe and SOHO 🚀",
+            "⚠️ Fun Fact": "Contains 99.8% of the solar system's total mass ⚠️"
           }
         },
         {
           "name": "Mercury",
           "image": "assets/images/mercury.png",
           "color": Colors.grey,
-          "description": "The closest planet to the Sun and the smallest in the solar system 🌑",
+          "description": "The closest and smallest planet to the Sun 🌑",
           "info": {
-            "📌 Overview": "A small rocky planet with a heavily cratered surface 🌑",
-            "📏 Size/Diameter": "4,879 km in diameter, about 38% the size of Earth 📏",
+            "📌 Overview": "Small rocky planet with many craters 🌑",
+            "📏 Size/Diameter": "4,879 km diameter, 38% of Earth's size 📏",
             "⚖️ Mass/Gravity": "Mass: 3.28 × 10²³ kg | Gravity: 3.7 m/s² ⚓",
-            "🌡️ Temperature": "Ranges from 430°C by day to -180°C by night 🌡️",
+            "🌡️ Temperature": "430°C by day to -180°C by night 🌡️",
             "🌍 Atmosphere": "Very thin, essentially an exosphere ☁️",
-            "🧱 Composition": "Rocky with a huge iron core making up most of its volume 🧱",
-            "🔄 Rotation (Day)": "Takes 59 Earth days to rotate on its axis ⏱️",
-            "☀️ Orbit (Year)": "Orbits the Sun very quickly every 88 Earth days 🗓️",
-            "🌙 Moons": "Has no natural satellites 🚫",
-            "💍 Rings": "A solid rocky planet with no rings 💍",
-            "📍 Location": "The first and innermost planet from the Sun 📍",
-            "🔭 Visibility": "Visible to the naked eye near the horizon at dawn or dusk 🔭",
-            "🚀 Exploration": "Explored by Mariner 10 and MESSENGER missions 🚀",
-            "⚠️ Fun Fact": "Mercury is slowly shrinking as its iron core cools ⚠️"
+            "🧱 Composition": "Rocky with a huge iron core 🧱",
+            "🔄 Day": "Takes 59 Earth days to rotate ⏱️",
+            "☀️ Year": "Orbits the Sun every 88 Earth days 🗓️",
+            "🌙 Moons": "No natural moons 🚫",
+            "💍 Rings": "No ring systems 💍",
+            "📍 Location": "First planet from the Sun 📍",
+            "🔭 Visibility": "Visible to the eye near the horizon at dawn 🔭",
+            "🚀 Exploration": "Mariner 10 and MESSENGER 🚀",
+            "⚠️ Fun Fact": "Mercury is slowly shrinking ⚠️"
           }
         },
         {
           "name": "Venus",
           "image": "assets/images/venus.png",
           "color": Colors.amber,
-          "description": "Earth's twin in size, but with a harsh, volcanic environment 🌋",
+          "description": "Earth's twin in size with a harsh volcanic environment 🌋",
           "info": {
-            "📌 Overview": "The hottest planet due to a runaway greenhouse effect 🌋",
-            "📏 Size/Diameter": "12,104 km in diameter, very close to Earth's size 📏",
+            "📌 Overview": "The hottest planet due to the greenhouse effect 🌋",
+            "📏 Size/Diameter": "12,104 km in diameter 📏",
             "⚖️ Mass/Gravity": "Mass: 4.86 × 10²⁴ kg | Gravity: 8.87 m/s² ⚓",
-            "🌡️ Temperature": "Reaches 462°C, hot enough to melt lead 🔥",
-            "🌍 Atmosphere": "Thick and heavy, composed mostly of carbon dioxide ☁️",
-            "🧱 Composition": "Rocky with an iron core and a surface full of volcanoes 🧱",
-            "🔄 Rotation (Day)": "Very long day (243 Earth days), longer than its year ⏱️",
-            "☀️ Orbit (Year)": "Takes 225 Earth days to orbit the Sun 🗓️",
-            "🌙 Moons": "A lonely planet with no moons orbiting it 🚫",
-            "💍 Rings": "No rings, but thick clouds of sulfuric acid 💍",
-            "📍 Location": "The second planet from the Sun 📍",
-            "🔭 Visibility": "Brightest object in the night sky after the Moon 🔭",
-            "🚀 Exploration": "Soviet Venera missions and NASA's Magellan 🚀",
-            "⚠️ Fun Fact": "Venus rotates clockwise, opposite to most other planets ⚠️"
+            "🌡️ Temperature": "Reaches 462°C, melts lead 🔥",
+            "🌍 Atmosphere": "Thick, heavy, mostly CO2 ☁️",
+            "🧱 Composition": "Rocky with many volcanoes 🧱",
+            "🔄 Day": "Takes 243 Earth days to rotate ⏱️",
+            "☀️ Year": "Orbits every 225 Earth days 🗓️",
+            "🌙 Moons": "No moons 🚫",
+            "💍 Rings": "No rings, just sulfuric acid clouds 💍",
+            "📍 Location": "Second planet from the Sun 📍",
+            "🔭 Visibility": "Brightest object after the Moon 🔭",
+            "🚀 Exploration": "Venera and Magellan missions 🚀",
+            "⚠️ Fun Fact": "Rotates backwards (East to West) ⚠️"
           }
         },
-      ];
         {
           "name": "Earth",
           "image": "assets/images/earth.png",
           "color": Colors.blue,
-          "description": "Our home and the only planet known so far to support life 🌍",
+          "description": "The only known planet to support life 🌍",
           "info": {
-            "📌 Overview": "A terrestrial ocean planet with oxygen and liquid water 🌿",
-            "📏 Size/Diameter": "Equatorial diameter is 12,756 km 📏",
+            "📌 Overview": "Terrestrial planet with liquid water 🌿",
+            "📏 Size/Diameter": "12,756 km in diameter 📏",
             "⚖️ Mass/Gravity": "Mass: 5.97 × 10²⁴ kg | Gravity: 9.8 m/s² ⚓",
-            "🌡️ Temperature": "The global average is about 15 degrees Celsius 🌡️",
-            "🌍 Atmosphere": "78% nitrogen, 21% oxygen; our protective shield ☁️",
-            "🧱 Composition": "Rocky planet with a crust, mantle, and metallic core 🧱",
-            "🔄 Rotation (Day)": "Takes 23 hours and 56 minutes to rotate ⏱️",
-            "☀️ Orbit (Year)": "Takes 365.25 days to complete one orbit 🗓️",
-            "🌙 Moons": "One large moon that affects our tides 🌙",
-            "💍 Rings": "Earth does not have any dust ring systems 💍",
-            "📍 Location": "Third planet from the Sun (Habitable Zone) 📍",
-            "🔭 Visibility": "Appears as a sparkling blue marble from space 🔭",
-            "🚀 Exploration": "Fully explored by thousands of satellites 🚀",
-            "⚠️ Fun Fact": "Earth is the only planet not named after a deity ⚠️"
+            "🌡️ Temperature": "Global average 15°C 🌡️",
+            "🌍 Atmosphere": "78% Nitrogen, 21% Oxygen ☁️",
+            "🧱 Composition": "Crust, mantle, and metallic core 🧱",
+            "🔄 Day": "23 hours and 56 minutes ⏱️",
+            "☀️ Year": "365.25 days 🗓️",
+            "🌙 Moons": "One large moon 🌙",
+            "💍 Rings": "No ring systems 💍",
+            "📍 Location": "Third planet from the Sun 📍",
+            "🔭 Visibility": "Appears as a blue marble from space 🔭",
+            "🚀 Exploration": "Explored by thousands of satellites 🚀",
+            "⚠️ Fun Fact": "Only planet not named after a deity ⚠️"
           }
         },
         {
           "name": "Mars",
           "image": "assets/images/mars.png",
           "color": Colors.red,
-          "description": "The Red Planet, the next frontier for humanity in space 🔴",
+          "description": "The Red Planet, humanity's next frontier 🔴",
           "info": {
-            "📌 Overview": "Cold rocky planet with a red color from iron oxide 🔴",
-            "📏 Size/Diameter": "6,779 km diameter, about half the size of Earth 📏",
+            "📌 Overview": "Cold rocky planet colored by iron oxide 🔴",
+            "📏 Size/Diameter": "6,779 km diameter 📏",
             "⚖️ Mass/Gravity": "Mass: 6.39 × 10²³ kg | Gravity: 3.72 m/s² ⚓",
-            "🌡️ Temperature": "Very cold with an average of -62°C 🌡️",
-            "🌍 Atmosphere": "Thin, composed of 95% carbon dioxide ☁️",
-            "🧱 Composition": "Rocky with an iron-sulfur core and silicate crust 🧱",
-            "🔄 Rotation (Day)": "Takes 24 hours and 37 minutes (called a 'Sol') ⏱️",
-            "☀️ Orbit (Year)": "Very long, taking 687 Earth days 🗓️",
-            "🌙 Moons": "Two small moons: Phobos and Deimos 🌙",
-            "💍 Rings": "Has no rings (but might gain one in the future) 💍",
-            "📍 Location": "Fourth planet and the outer limit of rocky planets 📍",
-            "🔭 Visibility": "Appears as a bright red star, clearly visible 🔭",
-            "🚀 Exploration": "Missions like Perseverance, Curiosity, and Hope 🚀",
-            "⚠️ Fun Fact": "Home to Olympus Mons, the largest volcano in the solar system ⚠️"
+            "🌡️ Temperature": "Average -62°C 🌡️",
+            "🌍 Atmosphere": "Thin, 95% CO2 ☁️",
+            "🧱 Composition": "Rocky with an iron-sulfur core 🧱",
+            "🔄 Day": "24 hours and 37 minutes (Sol) ⏱️",
+            "☀️ Year": "687 Earth days 🗓️",
+            "🌙 Moons": "Phobos and Deimos 🌙",
+            "💍 Rings": "No rings (yet) 💍",
+            "📍 Location": "Fourth planet from the Sun 📍",
+            "🔭 Visibility": "Appears as a bright red star 🔭",
+            "🚀 Exploration": "Perseverance, Curiosity, and Hope 🚀",
+            "⚠️ Fun Fact": "Home to the largest volcano, Olympus Mons ⚠️"
           }
         },
         {
           "name": "Jupiter",
           "image": "assets/images/jupiter.png",
           "color": Colors.brown,
-          "description": "King of the planets, a gas giant larger than all others combined 🟠",
+          "description": "The largest gas giant in the solar system 🟠",
           "info": {
-            "📌 Overview": "The largest planet, a massive ball of gas 🟠",
-            "📏 Size/Diameter": "A massive diameter of 139,820 km 📏",
+            "📌 Overview": "A massive ball of gas 🟠",
+            "📏 Size/Diameter": "139,820 km in diameter 📏",
             "⚖️ Mass/Gravity": "Mass: 1.89 × 10²⁷ kg | Gravity: 24.79 m/s² ⚓",
-            "🌡️ Temperature": "-110°C in the upper cloud layers 🌡️",
-            "🌍 Atmosphere": "Thick hydrogen and helium with violent storms ☁️",
-            "🧱 Composition": "Gas giant where gas condenses into liquid deep inside 🧱",
-            "🔄 Rotation (Day)": "Very fast, takes less than 10 hours ⏱️",
-            "☀️ Orbit (Year)": "Slow, taking 11.8 Earth years to orbit the Sun 🗓️",
-            "🌙 Moons": "95 confirmed moons, including the 4 'Galilean moons' 🌙",
-            "💍 Rings": "Possesses a very faint and dusty ring system 💍",
-            "📍 Location": "Fifth planet and the first of the outer gas giants 📍",
-            "🔭 Visibility": "Fourth brightest object in the sky, very easy to spot 🔭",
-            "🚀 Exploration": "Voyager, Galileo, and the current Juno mission 🚀",
-            "⚠️ Fun Fact": "The Great Red Spot is a storm that has lasted over 300 years ⚠️"
+            "🌡️ Temperature": "-110°C in upper clouds 🌡️",
+            "🌍 Atmosphere": "Hydrogen and helium with violent storms ☁️",
+            "🧱 Composition": "Gas giant with a liquid interior 🧱",
+            "🔄 Day": "Rotates in less than 10 hours ⏱️",
+            "☀️ Year": "11.8 Earth years 🗓️",
+            "🌙 Moons": "95 moons, including the Galilean moons 🌙",
+            "💍 Rings": "Very faint dust rings 💍",
+            "📍 Location": "Fifth planet from the Sun 📍",
+            "🔭 Visibility": "Easily spotted, very bright 🔭",
+            "🚀 Exploration": "Voyager, Galileo, and Juno 🚀",
+            "⚠️ Fun Fact": "The Great Red Spot is a 300-year-old storm ⚠️"
           }
         },
         {
           "name": "Saturn",
           "image": "assets/images/saturn.png",
           "color": Colors.orangeAccent,
-          "description": "The jewel of the solar system, adorned with a spectacular ring system 🪐",
+          "description": "Gas giant with a spectacular ring system 🪐",
           "info": {
-            "📌 Overview": "A gas giant famous for its massive, visible icy rings 🪐",
-            "📏 Size/Diameter": "Equatorial diameter is 116,460 km 📏",
+            "📌 Overview": "Famous for its massive icy rings 🪐",
+            "📏 Size/Diameter": "116,460 km in diameter 📏",
             "⚖️ Mass/Gravity": "Mass: 5.68 × 10²٦ kg | Gravity: 10.44 m/s² ⚓",
-            "🌡️ Temperature": "The average temperature is -140 degrees Celsius 🌡️",
-            "🌍 Atmosphere": "Primarily hydrogen and helium with gaseous clouds ☁️",
-            "🧱 Composition": "Gas giant (less dense than water; it could float!) 🧱",
-            "🔄 Rotation (Day)": "Rotates very quickly every 10.7 hours ⏱️",
-            "☀️ Orbit (Year)": "Takes 29.4 Earth years to orbit the Sun 🗓️",
-            "🌙 Moons": "146 moons, largest is 'Titan' which has an atmosphere 🌙",
-            "💍 Rings": "7 main rings made of billions of ice and dust pieces 💍",
-            "📍 Location": "The sixth planet from the Sun 📍",
-            "🔭 Visibility": "Visible to the eye, but rings require a telescope 🔭",
-            "🚀 Exploration": "Voyager missions and the historic Cassini-Huygens 🚀",
-            "⚠️ Fun Fact": "The rings are vast but only about 10 meters thick! ⚠️"
+            "🌡️ Temperature": "Average -140°C 🌡️",
+            "🌍 Atmosphere": "Hydrogen and helium ☁️",
+            "🧱 Composition": "Less dense than water 🧱",
+            "🔄 Day": "10.7 hours ⏱️",
+            "☀️ Year": "29.4 Earth years 🗓️",
+            "🌙 Moons": "146 moons, including Titan 🌙",
+            "💍 Rings": "7 main rings made of ice and dust 💍",
+            "📍 Location": "Sixth planet from the Sun 📍",
+            "🔭 Visibility": "Visible, but rings need a telescope 🔭",
+            "🚀 Exploration": "Voyager and Cassini-Huygens 🚀",
+            "⚠️ Fun Fact": "Rings are vast but only 10 meters thick ⚠️"
           }
         },
         {
           "name": "Uranus",
           "image": "assets/images/uranus.png",
           "color": Colors.cyan,
-          "description": "The cold ice giant that orbits the Sun on its side 💎",
+          "description": "The cold ice giant that orbits on its side 💎",
           "info": {
-            "📌 Overview": "Known for its blue-green color from methane gas 💎",
-            "📏 Size/Diameter": "Diameter is 50,724 km (4x Earth's size) 📏",
+            "📌 Overview": "Blue-green color from methane gas 💎",
+            "📏 Size/Diameter": "50,724 km diameter 📏",
             "⚖️ Mass/Gravity": "Mass: 8.68 × 10²٥ kg | Gravity: 8.69 m/s² ⚓",
-            "🌡️ Temperature": "The coldest planet, averaging -195°C 🌡️",
-            "🌍 Atmosphere": "Hydrogen, helium, and a high methane content ☁️",
-            "🧱 Composition": "Ice giant made of hot, dense icy materials 🧱",
-            "🔄 Rotation (Day)": "Takes 17.2 Earth hours to rotate on its axis ⏱️",
-            "☀️ Orbit (Year)": "Very slow, taking 84 Earth years for one orbit 🗓️",
-            "🌙 Moons": "27 known moons named after literary characters 🌙",
-            "💍 Rings": "Has 13 faint, dark rings that encircle it vertically 💍",
-            "📍 Location": "The seventh planet in order after Saturn 📍",
-            "🔭 Visibility": "Difficult to see with the naked eye; needs binoculars 🔭",
-            "🚀 Exploration": "Only visited by Voyager 2 in 1986 🚀",
-            "⚠️ Fun Fact": "Uranus orbits on its side (98° tilt), like it's rolling! ⚠️"
+            "🌡️ Temperature": "Coldest planet, average -195°C 🌡️",
+            "🌍 Atmosphere": "Hydrogen, helium, and methane ☁️",
+            "🧱 Composition": "Hot, dense icy materials 🧱",
+            "🔄 Day": "17.2 Earth hours ⏱️",
+            "☀️ Year": "84 Earth years 🗓️",
+            "🌙 Moons": "27 moons named after literature 🌙",
+            "💍 Rings": "13 faint vertical rings 💍",
+            "📍 Location": "Seventh planet from the Sun 📍",
+            "🔭 Visibility": "Needs binoculars to see 🔭",
+            "🚀 Exploration": "Visited by Voyager 2 in 1986 🚀",
+            "⚠️ Fun Fact": "Orbits on its side at a 98-degree tilt ⚠️"
           }
         },
         {
           "name": "Neptune",
           "image": "assets/images/neptune.png",
           "color": Colors.blueAccent,
-          "description": "The giant blue planet, home to the fastest winds in the solar system 🌀",
+          "description": "Giant blue planet with the fastest winds 🌀",
           "info": {
-            "📌 Overview": "A distant ice giant with a stunning deep blue color 🌀",
-            "📏 Size/Diameter": "Diameter is 49,244 km (slightly smaller than Uranus) 📏",
+            "📌 Overview": "Distant ice giant with a deep blue color 🌀",
+            "📏 Size/Diameter": "49,244 km diameter 📏",
             "⚖️ Mass/Gravity": "Mass: 1.02 × 10²٦ kg | Gravity: 11.15 m/s² ⚓",
-            "🌡️ Temperature": "Average temperature is around -201°C 🌡️",
-            "🌍 Atmosphere": "Hydrogen, helium, and methane with ammonia clouds ☁️",
-            "🧱 Composition": "Water, methane, and ammonia ice over a rocky core 🧱",
-            "🔄 Rotation (Day)": "Rotates every 16.1 Earth hours ⏱️",
-            "☀️ Orbit (Year)": "Takes 165 Earth years to orbit the Sun once 🗓️",
-            "🌙 Moons": "14 known moons, including Triton which orbits backwards 🌙",
-            "💍 Rings": "Has 5 main rings and several dusty ring arcs 💍",
-            "📍 Location": "The eighth and final official planet from the Sun 📍",
-            "🔭 Visibility": "Not visible to the eye; requires a powerful telescope 🔭",
-            "🚀 Exploration": "Only visited by Voyager 2 in 1989 🚀",
-            "⚠️ Fun Fact": "Winds on Neptune can exceed 2,100 km per hour! ⚠️",
-            "🌌 Discovery": "The only planet discovered via mathematical prediction 🌌"
+            "🌡️ Temperature": "Average -201°C 🌡️",
+            "🌍 Atmosphere": "Hydrogen, helium, and methane ☁️",
+            "🧱 Composition": "Water, methane, and ammonia ice 🧱",
+            "🔄 Day": "16.1 Earth hours ⏱️",
+            "☀️ Year": "165 Earth years 🗓️",
+            "🌙 Moons": "14 moons, including Triton 🌙",
+            "💍 Rings": "5 main rings 💍",
+            "📍 Location": "Eighth planet from the Sun 📍",
+            "🔭 Visibility": "Requires a powerful telescope 🔭",
+            "🚀 Exploration": "Visited by Voyager 2 in 1989 🚀",
+            "⚠️ Fun Fact": "Winds exceed 2,100 km per hour ⚠️"
           }
-        },
-      ]; // إغلاق القائمة الإنجليزية
+        }
+      ];
     }
   }
-} // إغلاق كلاس AppData النهائي
+}
