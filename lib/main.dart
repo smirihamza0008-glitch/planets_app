@@ -72,6 +72,7 @@ class _MainNavigationState extends State<MainNavigation> {
     );
   }
 }
+
 class AppData {
   static List<Map<String, dynamic>> getPlanets(bool isArabic) {
     return [
@@ -163,9 +164,6 @@ class AppData {
           {'t': isArabic ? '⚠️ حقائق' : '⚠️ Facts', 'b': isArabic ? '71% ماء.' : '71% water.'},
         ]
       },
-    ];
-  }
-}
       {
         'name': isArabic ? 'المريخ' : 'Mars',
         'image': 'assets/images/mars.png',
@@ -269,7 +267,7 @@ class AppData {
           {'t': isArabic ? '🔄 الدوران' : '🔄 Rotation', 'b': isArabic ? '16 ساعة أرضية.' : '16 Earth hours.'},
           {'t': isArabic ? '☀️ المدار' : '☀️ Orbit', 'b': isArabic ? '165 سنة أرضية.' : '165 Earth years.'},
           {'t': isArabic ? '🌙 الأقمار' : '🌙 Moons', 'b': isArabic ? '14 قمراً.' : '14 moons.'},
-          {'t': isArabic ? '💍 الحلقات' : '💍 Rings', 'b': iSArabic ? '5 حلقات داكنة.' : '5 dark rings.'},
+          {'t': isArabic ? '💍 الحلقات' : '💍 Rings', 'b': isArabic ? '5 حلقات داكنة.' : '5 dark rings.'},
           {'t': isArabic ? '📍 الموقع' : '📍 Position', 'b': isArabic ? 'الكوكب الثامن.' : '8th planet.'},
           {'t': isArabic ? '🔭 الرؤية' : '🔭 View', 'b': isArabic ? 'كرة زرقاء داكنة.' : 'Deep blue sphere.'},
           {'t': isArabic ? '🚀 الاستكشاف' : '🚀 Exploration', 'b': isArabic ? 'فوييجر 2.' : 'Voyager 2.'},
@@ -279,6 +277,66 @@ class AppData {
     ];
   }
 }
+
+class ExplorerScreen extends StatelessWidget {
+  final bool isArabic;
+  const ExplorerScreen({super.key, required this.isArabic});
+
+  @override
+  Widget build(BuildContext context) {
+    final planets = AppData.getPlanets(isArabic);
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Planet Explorer'),
+        centerTitle: true,
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+      ),
+      body: ListView.builder(
+        padding: const EdgeInsets.all(20),
+        itemCount: planets.length,
+        itemBuilder: (ctx, i) => GestureDetector(
+          onTap: () => Navigator.push(ctx, MaterialPageRoute(builder: (_) => DetailsScreen(p: planets[i], isArabic: isArabic))),
+          child: Container(
+            height: 140,
+            margin: const EdgeInsets.only(bottom: 20),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [planets[i]['color'].withOpacity(0.4), Colors.black],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+              borderRadius: BorderRadius.circular(25),
+            ),
+            child: Stack(
+              children: [
+                Positioned(
+                  right: isArabic ? null : 20,
+                  left: isArabic ? 20 : null,
+                  top: 20,
+                  child: Hero(tag: planets[i]['name'], child: Image.asset(planets[i]['image'], width: 100)),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(25),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(planets[i]['name'], style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: planets[i]['color'])),
+                      const SizedBox(height: 5),
+                      Text(isArabic ? "(استكشف الآن)" : "Explore Now", style: const TextStyle(color: Colors.white38)),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 class DetailsScreen extends StatefulWidget {
   final Map<String, dynamic> p;
   final bool isArabic;
