@@ -6,11 +6,12 @@ plugins {
 
 android {
     namespace "com.example.planets_app"
-    compileSdk 34
+    compileSdk 35 // تم التحديث إلى 35
 
     compileOptions {
-        // السطر القادم هو الأهم لحل مشكلة الإشعارات
+        // السطر القادم هو الأهم لحل مشكلة الإشعارات وجعل التطبيق يعمل على الهواتف القديمة والحديثة
         coreLibraryDesugaringEnabled true
+        
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
@@ -20,16 +21,23 @@ android {
     }
 
     defaultConfig {
+        // تأكد أن هذا المعرف هو نفسه الذي تستخدمه في مشروعك
         applicationId "com.example.planets_app"
         minSdk 21
-        targetSdk 34
+        targetSdk 35 // تم التحديث إلى 35
         versionCode 1
         versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.debug
+        }
     }
 }
 
 flutter {
-    source '../..'
+    source "../../.."
 }
 
 dependencies {
