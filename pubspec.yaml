@@ -1,10 +1,10 @@
 name: planets_explorer
-description: "Planets Explorer: Solar System Guide - An interactive guide to our solar system's planets with AR/EN localization, space facts, and stunning visuals."
+description: "Planets Explorer: Solar System Guide - An interactive guide to our solar system's planets with AR/EN support."
 publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.5.0
+  sdk: '>=3.1.0 <4.0.0'
 
 dependencies:
   flutter:
@@ -16,6 +16,8 @@ dependencies:
   permission_handler: ^11.3.0
   flutter_local_notifications: ^17.0.0
   timezone: ^0.9.2
+  # المكتبة التي طلبت إضافتها لعمل زر التقييم والروابط
+  url_launcher: ^6.1.11
 
 dev_dependencies:
   flutter_test:
@@ -25,5 +27,6 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
+  # تأكد من وجود مجلد الصور في مشروعك بهذا المسار
   assets:
     - assets/images/
