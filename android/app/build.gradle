@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace "com.example.planets_app"
+    namespace "com.example.planets_explorer" 
     compileSdk 35
 
     compileOptions {
@@ -19,7 +19,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.example.planets_app"
+        applicationId "com.example.planets_explorer"
         minSdk 21
         targetSdk 35
         versionCode 1
