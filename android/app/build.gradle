@@ -1,17 +1,9 @@
-plugins {
-    id "com.android.application"
-    id "kotlin-android"
-    id "dev.flutter.flutter-gradle-plugin"
-}
-
 android {
     namespace "com.example.planets_app"
-    compileSdk 35 // تم التحديث إلى 35
+    compileSdk 35
 
     compileOptions {
-        // السطر القادم هو الأهم لحل مشكلة الإشعارات وجعل التطبيق يعمل على الهواتف القديمة والحديثة
         coreLibraryDesugaringEnabled true
-        
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
@@ -21,10 +13,9 @@ android {
     }
 
     defaultConfig {
-        // تأكد أن هذا المعرف هو نفسه الذي تستخدمه في مشروعك
         applicationId "com.example.planets_app"
         minSdk 21
-        targetSdk 35 // تم التحديث إلى 35
+        targetSdk 35
         versionCode 1
         versionName "1.0"
     }
@@ -34,13 +25,4 @@ android {
             signingConfig signingConfigs.debug
         }
     }
-}
-
-flutter {
-    source "../../.."
-}
-
-dependencies {
-    // هذا السطر يكمل حل مشكلة الإشعارات ويسمح بالبناء الناجح
-    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.3'
 }
