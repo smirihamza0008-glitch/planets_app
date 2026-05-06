@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    // هذا السطر يجب أن يطابق تماماً مسار مجلدات الـ Kotlin لديك
+    // توحيد المعرف ليكون planets_app فقط
     namespace "com.example.planets_app" 
     compileSdk 35
 
@@ -30,8 +30,6 @@ android {
     buildTypes {
         release {
             signingConfig signingConfigs.debug
-            minifyEnabled false
-            shrinkResources false
         }
     }
 }
