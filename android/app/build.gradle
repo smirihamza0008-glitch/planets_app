@@ -1,41 +1,50 @@
-def localProperties = new Properties()
-def localPropertiesFile = rootProject.file('local.properties')
-if (localPropertiesFile.exists()) {
-    localPropertiesFile.withInputStream { localProperties.load(it) }
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    // هذا هو بلجن فلاتر الحديث الذي يربط المكتبات تلقائياً
+    id "dev.flutter.flutter-gradle-plugin"
 }
-
-def flutterRoot = localProperties.getProperty('flutter.sdk')
-if (flutterRoot == null) {
-    throw new GradleException("Flutter SDK not found.")
-}
-
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
+    // تأكد أن هذا الاسم يطابق المجلدات في مشروعك
     namespace "com.example.planets_explorer"
     compileSdk 34
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
     defaultConfig {
         applicationId "com.example.planets_explorer"
+        // الحد الأدنى لتشغيل التطبيق (أندرويد 5.0)
         minSdk 21
         targetSdk 34
         versionCode 1
         versionName "1.0"
+        
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
+            // إعدادات النسخة النهائية
             signingConfig signingConfigs.debug
+            minifyEnabled false
+            shrinkResources false
         }
     }
 }
 
-flutter {
-    source '../..'
-}
-
 dependencies {
+    // مكتبة كوتلن الأساسية المتوافقة مع الإعدادات
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.22"
+    
+    // دعم ميزات أندرويد الحديثة على الأجهزة القديمة
+    implementation "androidx.appcompat:appcompat:1.6.1"
+    implementation "androidx.core:core-ktx:1.12.0"
 }
