@@ -27,10 +27,7 @@ android {
 
     buildTypes {
         release {
-            // التعديل السحري هنا: نجعل نسخة الـ Release تستخدم توقيع الـ Debug 
-            // لكي يقبل Codemagic بناء التطبيق دون الحاجة لملف Keystore حالياً
             signingConfig signingConfigs.debug
-            
             minifyEnabled false
             shrinkResources false
         }
@@ -38,7 +35,7 @@ android {
 }
 
 dependencies {
+    // هذا السطر هو الحل النهائي لربط فلاتر بكوتلن
+    implementation "io.flutter:flutter_embedding_debug:1.0.0-e672b006451c51519958bbdc0682c332c86ba2c8"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.22"
-    implementation "androidx.appcompat:appcompat:1.6.1"
-    implementation "androidx.core:core-ktx:1.12.0"
 }
