@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    // معرف التطبيق البرمجي
+    // تعريف المسار البرمجي الموحد
     namespace "com.example.planets_explorer"
     compileSdk 35
 
@@ -31,7 +31,6 @@ android {
 
     buildTypes {
         release {
-            // التوقيع الافتراضي لضمان نجاح البناء في Codemagic
             signingConfig signingConfigs.debug
             minifyEnabled false
             shrinkResources false
@@ -40,10 +39,10 @@ android {
 }
 
 dependencies {
-    // تم وضع رقم الإصدار 1.9.22 يدوياً لحل مشكلة 'kotlin_version'
+    // حل مشكلة 'kotlin_version' بوضع الإصدار مباشرة
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.22"
     
-    // مكتبات لدعم التوافق وحل أخطاء Unresolved reference
+    // حل مشكلة Unresolved reference بإضافة المكتبات الناقصة
     implementation "androidx.annotation:annotation:1.7.1"
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.3'
 }
