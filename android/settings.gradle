@@ -1,20 +1,9 @@
 pluginManagement {
     def flutterSdkPath = {
-        // 1. يحاول البحث في إعدادات الموقع التي أضفتها أنت
-        def path = System.getenv("FLUTTER_SDK_PATH") ?: System.getenv("FLUTTER_ROOT")
-        
-        // 2. إذا لم يجدها، يبحث في ملف local.properties (للتوافق فقط)
-        if (path == null && file("local.properties").exists()) {
-            def properties = new Properties()
-            file("local.properties").withInputStream { properties.load(it) }
-            path = properties.getProperty("flutter.sdk")
-        }
-        
-        // 3. إذا فشل كل شيء، يضع المسار الافتراضي لـ Codemagic يدوياً
-        if (path == null) {
-            path = "/Users/builder/programs/flutter"
-        }
-        return path
+        def properties = new Properties()
+        file("local.properties").withInputStream { properties.load(it) }
+        def sdkPath = properties.getProperty("flutter.sdk")
+        return sdkPath
     }()
 
     includeBuild("$flutterSdkPath/packages/flutter_tools/gradle")
