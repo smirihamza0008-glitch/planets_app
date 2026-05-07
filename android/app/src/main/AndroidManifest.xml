@@ -1,26 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <uses-permission android:name="android.intent.action.INTERNET"/>
-
-    <queries>
-        <intent>
-            <action android:name="android.intent.action.VIEW" />
-            <data android:scheme="https" />
-        </intent>
-        <intent>
-            <action android:name="android.intent.action.VIEW" />
-            <data android:scheme="market" />
-        </intent>
-    </queries>
-
     <application
-        android:label="Planet Explorer"
+        android:label="Planets Explorer"
         android:name="${applicationName}"
         android:icon="@android:drawable/sym_def_app_icon"
-        android:supportsRtl="true"> <meta-data
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713"/>
-
+        android:roundIcon="@android:drawable/sym_def_app_icon">
         <activity
             android:name=".MainActivity"
             android:exported="true"
