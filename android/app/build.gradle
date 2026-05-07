@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    // اسم الحزمة الموحد لمشروعك
+    // معرف التطبيق البرمجي
     namespace "com.example.planets_explorer"
     compileSdk 35
 
@@ -21,15 +21,17 @@ android {
 
     defaultConfig {
         applicationId "com.example.planets_explorer"
-        // الحد الأدنى لعمل التطبيق
         minSdk 21
         targetSdk 35
         versionCode 1
         versionName "1.0"
+        
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
+            // التوقيع الافتراضي لضمان نجاح البناء في Codemagic
             signingConfig signingConfigs.debug
             minifyEnabled false
             shrinkResources false
@@ -38,7 +40,10 @@ android {
 }
 
 dependencies {
-    // تم استبدال المتغير برقم الإصدار 1.9.22 مباشرة لحل مشكلة الخطأ الأخير
+    // تم وضع رقم الإصدار 1.9.22 يدوياً لحل مشكلة 'kotlin_version'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.22"
+    
+    // مكتبات لدعم التوافق وحل أخطاء Unresolved reference
+    implementation "androidx.annotation:annotation:1.7.1"
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.3'
 }
