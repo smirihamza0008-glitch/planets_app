@@ -1,12 +1,10 @@
 plugins {
     id "com.android.application"
     id "org.jetbrains.kotlin.android"
-    // هذا البلجن هو المسؤول عن ربط مكتبات فلاتر برمجياً
     id "dev.flutter.flutter-gradle-plugin"
 }
 
 android {
-    // التأكد من مطابقة الـ Namespace لاسم مشروعك
     namespace "com.example.planets_explorer"
     compileSdk 34
 
@@ -20,20 +18,19 @@ android {
     }
 
     defaultConfig {
-        // معرف التطبيق الفريد الخاص بك
         applicationId "com.example.planets_explorer"
         minSdk 21
         targetSdk 34
         versionCode 1
         versionName "1.0"
-        
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
-            // إعدادات النسخة النهائية وتوقيع التطبيق
+            // التعديل السحري هنا: نجعل نسخة الـ Release تستخدم توقيع الـ Debug 
+            // لكي يقبل Codemagic بناء التطبيق دون الحاجة لملف Keystore حالياً
             signingConfig signingConfigs.debug
+            
             minifyEnabled false
             shrinkResources false
         }
@@ -41,7 +38,6 @@ android {
 }
 
 dependencies {
-    // دعم لغة كوتلن وتوافقها مع نظام أندرويد
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.22"
     implementation "androidx.appcompat:appcompat:1.6.1"
     implementation "androidx.core:core-ktx:1.12.0"
