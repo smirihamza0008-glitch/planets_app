@@ -2,7 +2,7 @@ plugins {
     id "com.android.application"
     id "kotlin-android"
     // أضفنا رقم الإصدار هنا لحل مشكلة 'was not found' الأخيرة
-    id "dev.flutter.flutter-gradle-plugin" version "1.0.0"
+    id "dev.flutter.flutter-gradle-plugin"
 }
 
 android {
