@@ -5,7 +5,6 @@ plugins {
 }
 
 android {
-    // تعريف المسار البرمجي الموحد
     namespace "com.example.planets_explorer"
     compileSdk 35
 
@@ -39,8 +38,15 @@ android {
 }
 
 dependencies {
+    // إصدار الكوتلن الثابت لحل خطأ المتغيرات
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.22"
-    // أضف هذا السطر تحديداً لحل مشكلة التعريفات الناقصة
+    
+    // مكتبات التوافق الأساسية
     implementation "androidx.appcompat:appcompat:1.6.1"
+    implementation "androidx.annotation:annotation:1.7.1"
+    
+    // الربط اليدوي لمكتبة فلاتر لحل مشكلة Unresolved reference: io
+    implementation "io.flutter:flutter_embedding_debug:1.0.0-+" 
+    
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.3'
 }
