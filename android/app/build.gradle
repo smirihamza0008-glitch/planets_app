@@ -35,7 +35,6 @@ android {
 }
 
 dependencies {
-    // هذا السطر هو الحل النهائي لربط فلاتر بكوتلن
-    implementation "io.flutter:flutter_embedding_debug:1.0.0-e672b006451c51519958bbdc0682c332c86ba2c8"
+    // هذا السطر يضمن جلب مكتبات فلاتر من الـ SDK مباشرة دون الحاجة لروابط خارجية
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.22"
 }
