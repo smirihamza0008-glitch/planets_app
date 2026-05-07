@@ -1,12 +1,11 @@
 plugins {
     id "com.android.application"
     id "kotlin-android"
-    // هذا هو بلجن فلاتر الحديث الذي يربط المكتبات تلقائياً
-    id "dev.flutter.flutter-gradle-plugin"
+    // أضفنا رقم الإصدار هنا لحل مشكلة 'was not found' الأخيرة
+    id "dev.flutter.flutter-gradle-plugin" version "1.0.0"
 }
 
 android {
-    // تأكد أن هذا الاسم يطابق المجلدات في مشروعك
     namespace "com.example.planets_explorer"
     compileSdk 34
 
@@ -21,30 +20,19 @@ android {
 
     defaultConfig {
         applicationId "com.example.planets_explorer"
-        // الحد الأدنى لتشغيل التطبيق (أندرويد 5.0)
         minSdk 21
         targetSdk 34
         versionCode 1
         versionName "1.0"
-        
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
-            // إعدادات النسخة النهائية
             signingConfig signingConfigs.debug
-            minifyEnabled false
-            shrinkResources false
         }
     }
 }
 
 dependencies {
-    // مكتبة كوتلن الأساسية المتوافقة مع الإعدادات
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.22"
-    
-    // دعم ميزات أندرويد الحديثة على الأجهزة القديمة
-    implementation "androidx.appcompat:appcompat:1.6.1"
-    implementation "androidx.core:core-ktx:1.12.0"
 }
