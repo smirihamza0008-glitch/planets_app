@@ -19,14 +19,17 @@ android {
 
     defaultConfig {
         applicationId "com.example.planets_explorer"
+        // يفضل استخدام 21 لضمان عمل التطبيق على الهواتف القديمة
         minSdk 21
         targetSdk 34
-        versionCode 1
-        versionName "1.0"
+        // هذه الأسطر تجعل التطبيق يقرأ الإصدار من ملف pubspec.yaml تلقائياً
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
     }
 
     buildTypes {
         release {
+            // في المرحلة الحالية، نستخدم debug للتجربة، لاحقاً سنحتاج لـ Keystore
             signingConfig signingConfigs.debug
             minifyEnabled false
             shrinkResources false
@@ -35,6 +38,5 @@ android {
 }
 
 dependencies {
-    // هذا السطر يضمن جلب مكتبات فلاتر من الـ SDK مباشرة دون الحاجة لروابط خارجية
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.22"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.9.22"
 }
