@@ -17,14 +17,13 @@ android {
         jvmTarget = '1.8'
     }
 
-    defaultConfig {
+        defaultConfig {
         applicationId "com.example.planets_explorer"
-        // يفضل استخدام 21 لضمان عمل التطبيق على الهواتف القديمة
         minSdk 21
         targetSdk 34
-        // هذه الأسطر تجعل التطبيق يقرأ الإصدار من ملف pubspec.yaml تلقائياً
-        versionCode flutterVersionCode.toInteger()
-        versionName flutterVersionName
+        // وضعنا الأرقام يدوياً هنا لحل المشكلة فوراً
+        versionCode 1
+        versionName "1.0.0"
     }
 
     buildTypes {
