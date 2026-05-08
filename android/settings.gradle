@@ -1,13 +1,6 @@
 pluginManagement {
     def flutterSdkPath = {
-        def properties = new Properties()
-        if (file("local.properties").exists()) {
-            file("local.properties").withInputStream { properties.load(it) }
-        }
-        def sdkPath = properties.getProperty("flutter.sdk") ?: System.getenv("FLUTTER_ROOT") ?: System.getenv("FLUTTER_SDK_PATH")
-        if (sdkPath == null) {
-            sdkPath = "/Users/builder/programs/flutter"
-        }
+        def sdkPath = System.getenv("FLUTTER_ROOT") ?: "/Users/builder/programs/flutter"
         return sdkPath
     }()
 
