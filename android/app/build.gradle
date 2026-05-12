@@ -8,27 +8,16 @@ android {
     namespace "com.example.planets_explorer"
     compileSdk 34
 
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
-
-        defaultConfig {
+    defaultConfig {
         applicationId "com.example.planets_explorer"
         minSdk 21
         targetSdk 34
-        // وضعنا الأرقام يدوياً هنا لحل المشكلة فوراً
         versionCode 1
         versionName "1.0.0"
     }
 
     buildTypes {
         release {
-            // في المرحلة الحالية، نستخدم debug للتجربة، لاحقاً سنحتاج لـ Keystore
             signingConfig signingConfigs.debug
             minifyEnabled false
             shrinkResources false
@@ -37,7 +26,5 @@ android {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation "io.flutter:flutter_embedding_debug:1.0.0-+" 
-    // السطر أعلاه هو الحل السحري لمشكلة Unresolved reference: io
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.9.22"
 }
