@@ -1,7 +1,7 @@
 name: planets_explorer
-description: "Planets Explorer: Solar System Guide - An Interactive guide to our solar system planets with AR/EN support"
-publish_to: 'none'
+description: "Planets Explorer: Solar System Guide"
 version: 1.0.0+1
+publish_to: 'none'
 
 environment:
   sdk: '>=3.2.3 <4.0.0'
