@@ -8,6 +8,15 @@ android {
     namespace "com.example.planets_explorer"
     compileSdk 34
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+
     defaultConfig {
         applicationId "com.example.planets_explorer"
         minSdk 21
@@ -26,5 +35,6 @@ android {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.9.22"
+    implementation platform('org.jetbrains.kotlin:kotlin-bom:1.9.22')
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib'
 }
