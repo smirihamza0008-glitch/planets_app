@@ -1,6 +1,7 @@
 workflows:
   android-workflow:
     name: Android Workflow
+    working_directory: planets_explorer
     max_build_duration: 120
     instance_type: mac_mini_m1
     environment:
@@ -9,11 +10,9 @@ workflows:
     scripts:
       - name: Get Flutter packages
         script: |
-          cd planets_explorer
           flutter packages pub get
       - name: Build Android APK
         script: |
-          cd planets_explorer
           flutter build apk --release
     artifacts:
-      - planets_explorer/build/app/outputs/flutter-apk/*.apk
+      - "**/build/app/outputs/flutter-apk/*.apk"
