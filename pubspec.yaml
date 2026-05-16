@@ -14,22 +14,14 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   path_provider: ^2.1.2
-  permission_handler: ^11.3.1
+  permission_handler: 11.3.1
   flutter_local_notifications: ^17.0.0
   timezone: ^0.9.2
 
-dependencies:
-  flutter:
+dev_dependencies:
+  flutter_test:
     sdk: flutter
-  cupertino_icons: ^1.0.8
-  url_launcher: ^6.1.11
-  flutter_localizations:
-    sdk: flutter
-  path_provider: ^2.1.2
-  permission_handler: 11.3.1  # بدون علامة ^ لإجباره على هذا الإصدار بالتحديد
-  flutter_local_notifications: ^17.0.0
-  timezone: ^0.9.2
-
+  flutter_lints: ^4.0.0
 
 flutter:
   uses-material-design: true
