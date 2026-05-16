@@ -14,8 +14,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   path_provider: ^2.1.2
-  permission_handler: 11.3.1
-  permission_handler_android: 11.3.0
+  permission_handler: ^11.3.1
   flutter_local_notifications: ^17.0.0
   timezone: ^0.9.2
 
