@@ -10,10 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.8
-  
-  # مكتبة الروابط بإصدارها المستقر والمتوافق مع الكود الخاص بك
-  url_launcher: ^6.2.5
-  
+  url_launcher: ^6.1.11
   flutter_localizations:
     sdk: flutter
   path_provider: ^2.1.2
