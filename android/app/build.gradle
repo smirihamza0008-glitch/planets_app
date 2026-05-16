@@ -17,7 +17,7 @@ android {
         jvmTarget = '17'
     }
 
-    defaultConfig {
+    defaultValue {
         applicationId "com.example.planets_explorer"
         minSdk 21
         targetSdk 34
@@ -36,4 +36,11 @@ android {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:1.9.22"
+}
+
+// الكود الجديد والنهائي لحل تعارض مكتبة الصلاحيات إجبارياً
+configurations.all {
+    resolutionStrategy {
+        force 'com.baseflow.permissionhandler:permission_handler_android:11.3.0'
+    }
 }
