@@ -10,15 +10,15 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.8
-  url_launcher: ^6.1.11
+  
+  # مكتبة الروابط بإصدارها المستقر والمتوافق مع الكود الخاص بك
+  url_launcher: ^6.2.5
+  
   flutter_localizations:
     sdk: flutter
   path_provider: ^2.1.2
-  
-  # هما السطران السحريان لإنهاء التعارض تماماً
   permission_handler: 11.3.1
   permission_handler_android: 11.3.0
-  
   flutter_local_notifications: ^17.0.0
   timezone: ^0.9.2
 
