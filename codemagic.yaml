@@ -6,9 +6,8 @@ workflows:
     environment:
       flutter: stable
       java: 17
-
     scripts:
-      - name: Clean Project and Get Packages
+      - name: Clean and Get Packages
         script: |
           flutter clean
           flutter pub cache clean --force
