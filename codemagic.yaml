@@ -6,6 +6,13 @@ workflows:
     environment:
       flutter: stable
       java: 17
+    
+    # هنا نقوم بتفعيل الـ Caching للمكاتب لتسريع البناء ومسح الكاش القديم
+    cache:
+      cache_paths:
+        - $FLUTTER_ROOT/.pub-cache
+        - ~/.gradle/caches
+
     scripts:
       - name: Get Flutter packages
         script: |
